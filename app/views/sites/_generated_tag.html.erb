@@ -1,0 +1,30 @@
+<div class="widget form">
+  <div class="widget-header">
+    <span class="icon-article"></span>
+    <h3>Clickr Tag</h3>
+  </div>
+  <div class="widget-content">
+    <div class="field-group">
+      <div class="field">
+        <textarea name="site_tag" id="site_tag" rows="5" cols="50">
+<script type='text/javascript'>
+  <!--
+  var clickr_id = "<%= @site.public_id %>"; // <%= @site.host %>
+  (function () {
+      var _clickr   = document.createElement('script');
+      _clickr.type  = 'text/javascript';
+      _clickr.async = true;
+      _clickr.src   = ('https:' == document.location.protocol ? 'https://' : 'http://') + "testing.womensforum.com/clickr.min.js";
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_clickr);
+  })();
+  //-->
+</script>
+        </textarea>
+        <label for="site_tag">Copy &amp; paste this code just before the closing <em>body</em> element on <%= @site.host %></label>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="float: right; margin-top: 150px; position: relative; top: 150px;">
+  <%= link_to 'Delete Site', @site, method: :delete, data: { confirm: 'Are you sure?'}, :class => 'btn btn-error'  %>
+</div>

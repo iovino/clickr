@@ -1,0 +1,16 @@
+<div id="contentHeader">
+    <h1><%= @site.host %></h1>
+</div>
+<div class="container">
+  <div class="grid-24">
+    <%= render :partial => 'form' %>
+  </div>
+
+  <div class="grid-24">
+    <%= render :partial => 'ad_units' %>
+  </div>
+
+  <div class="grid-24">
+    <%= render :partial => 'generated_tag' %>
+  </div>
+</div>

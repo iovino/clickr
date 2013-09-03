@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Site:</b>
+  <%= @ad_unit.site_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @ad_unit.name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @ad_unit.code %>
+</p>
+
+
+<%= link_to 'Edit', edit_ad_unit_path(@ad_unit) %> |
+<%= link_to 'Back', ad_units_path %>

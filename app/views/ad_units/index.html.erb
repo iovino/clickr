@@ -1,0 +1,27 @@
+<h1>Listing ad_units</h1>
+
+<table>
+  <tr>
+    <th>Site</th>
+    <th>Name</th>
+    <th>Code</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ad_units.each do |ad_unit| %>
+  <tr>
+    <td><%= ad_unit.site_id %></td>
+    <td><%= ad_unit.name %></td>
+    <td><%= ad_unit.code %></td>
+    <td><%= link_to 'Show', ad_unit %></td>
+    <td><%= link_to 'Edit', edit_ad_unit_path(ad_unit) %></td>
+    <td><%= link_to 'Destroy', ad_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ad unit', new_ad_unit_path %>

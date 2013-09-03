@@ -1,0 +1,69 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title><%= content_for?(:title) ? yield(:title) : "Clickr" %></title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <!--[if gte IE 9]>
+    <link rel="stylesheet" href="/assets/ie9.css" type="text/css" />
+    <![endif]-->
+
+    <!--[if gte IE 8]>
+    <link rel="stylesheet" href="assets/ie8.css" type="text/css" />
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1><a href="/">Clickr Admin</a></h1>
+            <a href="javascript:;" id="reveal-nav">
+                <span class="reveal-bar"></span>
+                <span class="reveal-bar"></span>
+                <span class="reveal-bar"></span>
+            </a>
+        </div>
+
+        <div id="search">
+            <form>
+                <input type="text" name="search" placeholder="Search..." id="searchField" />
+            </form>
+        </div>
+
+        <div id="sidebar">
+            <ul id="mainNav">
+                <li id="addNav" class="nav">
+                    <span class="icon-new-window"></span>
+                    <%= link_to "Add New Site", new_site_path %>
+                </li>
+
+                <% fetch_all_sites().each do |site| %>
+                <li class="nav<%= is_active_site(site) %>" id="nav-<%= site.id %>" search-data="<%= site.host %>">
+                    <span class="icon-wrench"></span>
+                    <%= link_to site.host, edit_site_path(site) %>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+
+        <div id="content">
+            <%= yield %>
+        </div>
+    </div>
+
+    <div id="footer">
+        Clickr Copyright &copy; 2013, Womensforum.com.
+    </div>
+
+    <%= javascript_include_tag "application" %>
+    <%= yield :footer %>
+</body>
+</html>

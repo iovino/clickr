@@ -1,0 +1,32 @@
+<%= form_for @ad_unit, :html => { :class => 'form uniformForm' } do |f| %>
+    <div class="widget">
+      <div class="widget-header">
+        <span class="icon-article"></span>
+        <h3>Ad Unit</h3>
+      </div>
+
+      <div class="widget-content">
+
+        <div class="field-group">
+          <%= f.label :name, 'Ad Unit Name:'%>
+          <div class="field">
+            <%= f.text_field :name, :size => '35', :id => 'name' %>
+            <label for="name">Create a name for this ad unit (e.g. 728x90 Frontpage)</label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="dart">DART Tag:</label>
+          <div class="field">
+            <textarea name="dart" id="dart" cols="50" rows="5"></textarea>
+            <label for="name"><a href="#" id="dart_instructions">Click here for instructions</a> on how to locate the correct DART tags from Google DFP</label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.hidden_field :site_id, :value => @ad_unit.site_id %>
+          <%= f.submit 'Create Ad Unit', :class => 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+<% end %>

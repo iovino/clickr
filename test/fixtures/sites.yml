@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  public_id: 1
+  host: MyString
+  analytics: MyString
+  comscore: MyString
+  krux: MyString
+  leaderboard_top: MyString
+
+two:
+  public_id: 1
+  host: MyString
+  analytics: MyString
+  comscore: MyString
+  krux: MyString
+  leaderboard_top: MyString

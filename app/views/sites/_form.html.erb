@@ -1,0 +1,46 @@
+<%= form_for @site, :html => { :class => 'form uniformForm' } do |f| %>
+    <div class="widget">
+        <div class="widget-header">
+            <span class="icon-article"></span>
+            <h3>General</h3>
+        </div>
+
+        <div class="widget-content">
+            <div class="field-group">
+                <%= f.label :host, 'Site Name:'%>
+                <div class="field">
+                    <%= f.text_field :host, :size => '35', :id => 'site-name' %>
+                    <label for="site-name">Enter the name of the site (e.g. womensforum.com)</label>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <%= f.label :analytics, 'Google Analytics:'%>
+                <div class="field">
+                    <%= f.text_field :analytics, :size => '15', :id => 'analytics' %>
+                    <label for="analytics">Enter your Google Analytics UA ID (e.g. UA-XXXXXXX-XX)</label>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <%= f.label :krux, 'Krux ID:'%>
+                <div class="field">
+                    <%= f.text_field :krux, :size => '10', :id => 'krux' %>
+                    <label for="krux">Enter your eight digit Krux code here</label>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <%= f.label :comscore, 'Comscore ID:'%>
+                <div class="field">
+                    <%= f.text_field :comscore, :size => '10', :id => 'comscore' %>
+                    <label for="comscore">Enter your seven digit Comscore ID here</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
+<% end %>

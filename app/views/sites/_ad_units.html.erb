@@ -1,0 +1,32 @@
+<div class="widget widget-table">
+  <div class="widget-header">
+    <span class="icon-list"></span>
+    <h3 class="icon chart">Ad Units for <%= @site.host %></h3>
+  </div>
+
+  <div class="widget-content">
+    <table class="table table-bordered table-striped">
+      <tbody>
+      <% unless @ad_units.empty? %>
+          <% @ad_units.each do |ad_unit| %>
+              <tr>
+                <td><%= ad_unit.name %></td>
+                <td>
+                  <input type="text" value="<%= ad_unit.code %>" size="66" class="ad_unit_tag" />
+                </td>
+                <td style="text-align: center;">
+                  <%= link_to 'Edit', edit_ad_unit_path(ad_unit), :class => 'btn btn-small btn-quaternary' %>
+                  <%= link_to 'Delete', ad_unit, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-small btn-error' %>
+                </td>
+              </tr>
+          <% end %>
+      <% else %>
+        <tr>
+          <td>There are no ad units created for this site.</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= link_to 'Create Ad Unit', new_ad_unit_path(:site_id => @site.id), :class => 'btn btn-green' %>
