@@ -14,6 +14,16 @@
                 </div>
             </div>
 
+            <% unless params[:action] == 'new' %>
+            <div class="field-group">
+                <%= f.label :host, 'Clickr ID:'%>
+                <div class="field">
+                    <%= f.text_field :public_id, :size => '35', :id => 'public-id', :readonly => true %>
+                    <label for="public-id">This ID is used to uniquely identify each site and cannot be changed.</label>
+                </div>
+            </div>
+            <% end %>
+
             <div class="field-group">
                 <%= f.label :analytics, 'Google Analytics:'%>
                 <div class="field">
