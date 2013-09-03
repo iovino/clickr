@@ -11,6 +11,7 @@ gem 'debugger'
 gem "prompter", "~> 0.1.5"
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'haml'
+gem 'therubyracer'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
