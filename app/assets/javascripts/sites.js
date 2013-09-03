@@ -1,4 +1,4 @@
-$(function(){
+$(function() {
     $("#site_tag").click(function() {
         this.select(); return false;
     });

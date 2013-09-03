@@ -47,6 +47,7 @@ function build_search_results(results) {
 function build_nav_add_link() {
     html  = "<li id=\"addNav\" class=\"nav\">";
     html += $("#addNav").html() + "</li>";
+
     return html;
 }
 
@@ -54,5 +55,6 @@ function build_search_result(object) {
     html   = "<li class=\"nav\" id=\""+ object.getAttribute('id') +"\" search-data=\""+ object.getAttribute('search-data') +"\">";
     html  += object.innerHTML;
     html  += "</li>";
+
     return html;
 }
