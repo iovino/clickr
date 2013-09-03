@@ -1,0 +1,4 @@
+AuthUserFile /home/app_user/enadmin.escalatemedia.com/current/public/.htpasswd
+AuthType Basic
+AuthName "Admins Only"
+Require valid-user
