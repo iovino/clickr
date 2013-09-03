@@ -1,5 +1,5 @@
 $(function(){
-    $('#dart_instructions').live ('click', function (e) {
+    $(document).on('click', '#dart_instructions', function(e){
         e.preventDefault ();
 
         $.modal ({

@@ -37,7 +37,7 @@ $.modal = function (config) {
 	}
 	
 	if (options.ajax !== '') {
-		content.html ('<div id="modalLoader"><img src="./img/ajax-loader.gif" /></div>');
+		content.html ('<div id="modalLoader"><img src="/assets/loaders/squares.gif" /></div>');
 		$.modal.reposition ();
 		$.get (options.ajax, function (response) {
 			content.html (response);
