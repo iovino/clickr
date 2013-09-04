@@ -15,6 +15,7 @@
           </div>
         </div>
 
+        <% unless params[:action] == 'edit' %>
         <div class="field-group">
           <label for="dart">DART Tag:</label>
           <div class="field">
@@ -22,10 +23,11 @@
             <label for="name"><a href="#" id="dart_instructions">Click here for instructions</a> on how to locate the correct DART tags from Google DFP</label>
           </div>
         </div>
+        <% end %>
 
         <div class="actions">
           <%= f.hidden_field :site_id, :value => @ad_unit.site_id %>
-          <%= f.submit 'Create Ad Unit', :class => 'btn btn-primary' %>
+          <%= f.submit 'Save Ad Unit', :class => 'btn btn-primary' %>
         </div>
       </div>
     </div>
