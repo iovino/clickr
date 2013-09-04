@@ -51,7 +51,7 @@ class AdUnitsController < ApplicationController
 
     respond_to do |format|
       if @ad_unit.update_attributes(params[:ad_unit])
-        format.html { redirect_to @ad_unit, notice: 'Ad unit was successfully updated.' }
+        format.html { redirect_to edit_site_path(@ad_unit.site_id), notice: 'Ad unit was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
