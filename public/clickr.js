@@ -947,12 +947,57 @@
      *
      * @var {string}
      */
-    var ad_server = (window.location.protocol + '//testing.womensforum.com/');
+    var ad_server = (window.location.protocol + '//127.0.0.1/clickr/public/');
 
     /**
      * Main Clickr object
      */
     var Clickr = {
+        /**
+         * Builds the Krux Control tag which is used when we want Krux to determine the domain.
+         *
+         * @return {string}
+         */
+        BuildGenericKruxTag: function() {
+            var html = ""+
+                "window.Krux || ((Krux=function(){Krux.q.push(arguments);}).q=[]);"+
+                "(function(){"+
+                "  function retrieve(n){"+
+                "      var m, k='kx'+n;"+
+                "      if (window.localStorage) {"+
+                "          return  window.localStorage[k]  ||  '';"+
+                "      }   else    if  (navigator.cookieEnabled)   {"+
+                "          m   =   document.cookie.match(k+'=([^;]*)');"+
+                "          return  (m  &&  unescape(m[1])) ||  '';"+
+                "      }   else    {"+
+                "          return  '';"+
+                "      }"+
+                "  }"+
+                ""+
+                "  Krux.user     = retrieve('user');"+
+                "  Krux.segments = retrieve('segs') ? retrieve('segs').split(',') : [];"+
+                ""+
+                "  var dfpp    =   [];"+
+                "  if  (Krux.user) {"+
+                "      dfpp.push('khost='  +   encodeURIComponent(location.hostname));"+
+                "      dfpp.push('kuid='   +   Krux.user);"+
+                "  }"+
+                "  for (var i = 0; i < Krux.segments.length; i++) {"+
+                "      dfpp.push('ksg=' + Krux.segments[i]);"+
+                "  }"+
+                "  Krux.dfppKeyValues = dfpp.length ? dfpp.join(';') + ';' : '';"+
+                "})();"+
+                ""+
+                "(function(){"+
+                "    var k=document.createElement('script');k.type='text/javascript';k.async=true;"+
+                "    var m,src=(m=location.href.match(/\bkxsrc=([^&]+)/))&&decodeURIComponent(m[1]);"+
+                "    k.src = (location.protocol==='https:'?'https:':'http:')+'//cdn.krxd.net/controltag?confid=IkIevuhg';"+
+                "    var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(k,s);"+
+                "}());";
+
+            return html;
+        },
+
         /**
          * Builds the Krux javascript tag
          *
@@ -1147,7 +1192,14 @@
                         body.appendChild(analytics);
                     }
 
-                    if (parsed.krux) {
+                    if (parsed.krux_control == '1') {
+                        console.log('krux_control');
+                        var krux       = document.createElement("script");
+                        krux.type      = "text/javascript";
+                        krux.innerHTML = Clickr.BuildGenericKruxTag(parsed);
+                        body.appendChild(krux);
+                    } else if (parsed.krux) {
+                        console.log('krux');
                         var krux       = document.createElement("script");
                         krux.type      = "text/javascript";
                         krux.innerHTML = Clickr.BuildKruxTag(parsed);

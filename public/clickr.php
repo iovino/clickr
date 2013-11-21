@@ -22,6 +22,7 @@ class Clickr {
                 'analytics'         => $site['analytics'],
                 'comscore'          => $site['comscore'],
                 'krux'              => $site['krux'],
+                'krux_control'      => $site['krux_control'],
                 'leaderboard_top'   => $site['leaderboard_top'],
                 'body_style'        => ''
             ));
@@ -40,5 +41,6 @@ class Clickr {
 
 $clickr = new Clickr($_REQUEST['clickr_id'] ? $_REQUEST['clickr_id'] : $_POST['clickr_id']);
 
+header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 die($clickr->serve_tags());

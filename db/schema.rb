@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130831032616) do
+ActiveRecord::Schema.define(:version => 20131119194734) do
 
   create_table "ad_units", :force => true do |t|
     t.integer  "site_id"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(:version => 20130831032616) do
     t.string   "analytics"
     t.string   "comscore"
     t.string   "krux"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.boolean  "krux_control"
   end
 
   add_index "sites", ["public_id"], :name => "index_sites_on_public_id"

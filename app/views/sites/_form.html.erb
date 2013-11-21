@@ -33,12 +33,19 @@
             </div>
 
             <div class="field-group">
+                <%= f.label :krux, 'Use Krux\'s Control Tag?'%>
+                <div class="field">
+                    <%= f.check_box :krux_control, :id => 'krux-control' %>
+                    <label for="krux_control">If checked, Krux will determine the domain.</label>
+                </div>
+            </div>
+            <div class="field-group" id="krux-control-group">
                 <%= f.label :krux, 'Krux ID:'%>
                 <div class="field">
                     <%= f.text_field :krux, :size => '10', :id => 'krux' %>
-                    <label for="krux">Enter your eight digit Krux code here</label>
+                    <label for="krux">Enter your eight digit Krux ID here</label>
                 </div>
-            </div>
+          </div>
 
             <div class="field-group">
                 <%= f.label :comscore, 'Comscore ID:'%>
