@@ -947,7 +947,8 @@
      *
      * @var {string}
      */
-    var ad_server = (window.location.protocol + '//127.0.0.1/clickr/public/');
+    //var ad_server = (window.location.protocol + '//127.0.0.1/clickr/public/');
+    var ad_server = (window.location.protocol + '//testing.womensforum.com/');
 
     /**
      * Main Clickr object
