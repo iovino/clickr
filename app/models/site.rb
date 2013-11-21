@@ -3,9 +3,5 @@ class Site < ActiveRecord::Base
 
   has_many :ad_units, :dependent => :destroy
 
-  validates :host, :analytics, :comscore, :krux, presence: true
-  validates :analytics, format: { with: /\AUA-[0-9]+-[0-9]+\z/, message: "only allows letters" }
-  validates :comscore, format: { with: /\A[0-9]+\z/, message: "only allows letters" }
-  validates :comscore, length: { is: 7 }
-  validates :krux, length: { is: 8 }
+  validates :host, presence: true
 end
