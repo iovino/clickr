@@ -935,7 +935,7 @@
     }());
 
     // export postscribe
-    global.postscribe = postscribe;
+        global.postscribe = postscribe;
 
 }());
 
@@ -1068,6 +1068,16 @@
         },
 
         /**
+         * Builds the Womensforum.com + Glam footer logo
+         *
+         * @return {string}
+         */
+        BuildGlamLogo: function() {
+            var html = '<img src="' + ad_server + '/images/wf-glam-logo.png" border="0" alt=""/ >';
+            return html;
+        },
+
+        /**
          * Replaces placeholders tags with their respected data
          *
          * @param {string} The HTML string that we're checking
@@ -1129,26 +1139,48 @@
         },
 
         /**
+         * Renders a logo to the screen using the clickr-logo attributes value
+         *
+         * @param {object} The div object containing the logo information
+         * @return
+         */
+        RenderLogo: function(div) {
+            var logo = div.getAttribute('clickr-logo');
+            if (logo == 'glam') {
+                postscribe(div, this.BuildGlamLogo());
+            }
+        },
+
+        /**
          * Renders all the ads to the screen
          *
          * @return {void}
          */
         RenderAds: function() {
-            var fetchAdElements = function() {
+            var fetchElements = function($attribute_id) {
                 var matchingElements = [];
                 var allElements = document.getElementsByTagName('*');
                 for (var i = 0; i < allElements.length; i++) {
-                    if (allElements[i].getAttribute("clickr-ad")) {
+                    if (allElements[i].getAttribute($attribute_id)) {
                         matchingElements.push(allElements[i]);
                     }
                 }
                 return matchingElements;
             };
 
-            var ads = fetchAdElements();
+            // render clickr ad if found
+            var ads = fetchElements("clickr-ad");
             if (ads != null && ads.length > 0) {
                 for (var i = 0; i < ads.length; i++) {
                     this.RenderAd(ads[i])
+                }
+            }
+
+            // render glam logo if found
+            var logos = fetchElements("clickr-logo");
+            if (logos != null && logos.length > 0) {
+                for (var i = 0; i < logos.length; i++) {
+                    this.RenderLogo(logos[i]);
                 }
             }
         },
@@ -1194,13 +1226,11 @@
                     }
 
                     if (parsed.krux_control == '1') {
-                        console.log('krux_control');
                         var krux       = document.createElement("script");
                         krux.type      = "text/javascript";
                         krux.innerHTML = Clickr.BuildGenericKruxTag(parsed);
                         body.appendChild(krux);
                     } else if (parsed.krux) {
-                        console.log('krux');
                         var krux       = document.createElement("script");
                         krux.type      = "text/javascript";
                         krux.innerHTML = Clickr.BuildKruxTag(parsed);
