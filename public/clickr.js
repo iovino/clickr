@@ -1073,7 +1073,7 @@
          * @return {string}
          */
         BuildGlamLogo: function() {
-            var html = '<img src="' + ad_server + '/images/wf-glam-logo.png" border="0" alt=""/ >';
+            var html = '<div style="text-align: center;"><img src="' + ad_server + '/images/wf-glam-logo.png" border="0" alt=""/ ></div>';
             return html;
         },
 
