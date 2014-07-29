@@ -1,0 +1,52 @@
+## Requirements
+  - Ruby 1.9.3+
+  - Rails 3.2.6+
+  - RVM
+  
+## Install Instructions
+**Make sure all the required libraries are installed before proceeding.**
+
+The first thing you'll want to do is clone the application to your computer. 
+
+    git clone https://github.com/iovino/clickr.git /path/to/install
+
+Next, you need to create an RVM gemset for this app
+
+    rvm gemset create clickr
+
+Then create a .rvmrc file in the application's root folder
+
+    touch /path/to/install/.rvmrc
+
+The contents of your .rvmrc file should look like this
+
+    rvm use ruby-1.9.3-p194@clickr --create
+
+Install all the gems
+
+    bundle install
+
+Edit ```config/database.yml``` accordingly and create the databases
+    
+    rake db:create
+
+Migrate the database
+
+    rake db:migrate
+
+Seed the database
+
+    rake db:seed
+
+Start the server
+  
+    rails s
+    
+## Screenshots
+
+![](https://raw.githubusercontent.com/iovino/clickr/master/app/assets/images/screenshots/dash.png "Dashboard")
+![](https://raw.githubusercontent.com/iovino/clickr/master/app/assets/images/screenshots/newsite.png "Add Site")
+![](https://raw.githubusercontent.com/iovino/clickr/master/app/assets/images/screenshots/editsite1.png "Edit Site")
+![](https://raw.githubusercontent.com/iovino/clickr/master/app/assets/images/screenshots/editsite2.png "Edit Site Continued...")
+![](https://raw.githubusercontent.com/iovino/clickr/master/app/assets/images/screenshots/newad.png "New Ad")
+![](https://raw.githubusercontent.com/iovino/clickr/master/app/assets/images/screenshots/instructions.png "Instructions")
